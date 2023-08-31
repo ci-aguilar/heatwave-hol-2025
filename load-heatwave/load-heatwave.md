@@ -8,6 +8,10 @@ A HeatWave cluster comprise of a MySQL DB System node and one or more HeatWave n
 
 ![heatwave architect](./images/mysql-heatwave-architecture.png "heatwave architect ")
 
+Click the following link for an overview of the airportdb database structure:
+
+- [Diagram of airportdb schema](https://dev.mysql.com/doc/airportdb/en/airportdb-structure.html).
+
 _Estimated Time:_ 10 minutes
 
 ### Objectives

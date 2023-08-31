@@ -179,8 +179,54 @@ In this lab, you will be guided through the following tasks:
     - b. Departure Arrival time convenient - Satisfaction Level is greater 50% let's leave it alone.
     - c. The customer's are very disatisfied with  Departure and Arrival Delays. How can we fix this problem with the booking application.
 
-15. What if we could get data on airline routes and their delays... and what if we cauld find a way to predict fligt delays before the customer made their reservation and provide this information so they could choose flights with less delays? Lab 7 can help make it happen! 
+15. What if we could get data on airline routes and their delays... and what if we cauld find a way to predict fligt delays before the customer made their reservation and provide this information so they could choose flights with less delays? You can skip to Lab 7 to help make it happen!
 
+## Task 5: - Build OAC Dashboard with non-Lakehouse data**
+
+1. Select the MySQL Connection created earlier "heatwave"
+
+2. Double click "Manual Query" on the left panel and click ”Manual Query” tab on the bottom
+
+    ![manual query](./images/manual-query-select.png "manual-query-select ")
+
+3. Add the following SQL query (find per-company average age of passengers from Switzerland, Italy and France) in the statement text box, and select “Live” in Data Access on the right, then click OK on the top
+
+    ```bash
+    <copy>SELECT
+        airline.airlinename,
+        AVG(datediff(departure,birthdate)/365.25) as avg_age,
+        count(*) as nbpeople
+    FROM
+        booking, flight, airline, passengerdetails
+    WHERE
+        booking.flight_id=flight.flight_id AND
+        airline.airline_id=flight.airline_id AND
+        booking.passenger_id=passengerdetails.passenger_id AND
+        country IN ("SWITZERLAND", "FRANCE", "ITALY")
+    GROUP BY
+        airline.airlinename
+    ORDER BY
+        airline.airlinename, avg_age
+    LIMIT 10;</copy>
+    ```
+
+4. Dataset screen
+    ![set oac dataset](./images/new-data-set-oac.png "new-data-set-oac ")
+
+5. Click the  save button and set the DataSet name to Passengers then click Create workbook button
+    ![create oac workbook](./images/create-workbook-oac.png "create-workbook-oac")
+
+6. On new display page  click on the Dataset icon, select airline and nbrpeople
+    ![select columns](./images/passenger-column.png "passenger-column")
+7. Right click and select "Create Best Visualization".
+    ![auto visualization](./images/best-visualization-oac.png "best-visualization-oac")
+
+9. Click on the bottom + sign to add Canvas 2 , select airline and avg_age
+
+9. Right click and select "Pick Visualization" and select pie chart.
+    ![manual visualization](./images/pick-visualization-oac.png "pick-visualization-oac ")
+
+10. Save Workbook as "passenger Workbook" and close OAC application
 You may now **proceed to the next lab**
 
 ## Acknowledgements
