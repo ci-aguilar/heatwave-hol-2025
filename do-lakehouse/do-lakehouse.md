@@ -22,7 +22,21 @@ In this lab, you will be guided through the following tasks:
 - Some Experience with MySQL Shell
 - Completed Lab 4
 
-## Task 1: Download survey file to your local machine
+## Task 1: Enable HeatWave Lakehouse Service
+
+1. Open the navigation menu  
+    - Databases
+    - MySQL
+    - DB Systems
+2. Choose the **turbo** Compartment. A list of DB Systems is displayed.click the **HEATWAVE-DB** system
+    ![navigation mysql with instance](./images/navigation-mysql-with-instance.png "navigation mysql with instance")
+
+3. Page down to the Resources menu click the "HeatWave" link and click the **Lakehouse "Enable"** link
+
+    ![mysql more actions add cluster](./images/mysql-heatwave-lakehouse-enable.png " mysql more actions add cluster")
+
+
+## Task 2: Download survey file to your local machine
 
 1. From Windows,linux, or mac Local machine click  this  link to download the data file to your local machine
 
@@ -30,7 +44,7 @@ In this lab, you will be guided through the following tasks:
 
 2. Save the file on your local machine. Make sure that the file is saved with extension `.csv`.
 
-## Task 2: Create Object Storage bucket
+## Task 3: Create Object Storage bucket
 
 1. Sign in to OCI using your tenant name, user name and password.
 2. Once signed in select the **turbo** compartment
@@ -48,7 +62,7 @@ In this lab, you will be guided through the following tasks:
 
     ![press bucket button](./images/press-bucket-button.png "press-bucket-button")
 
-## Task 3: Upload passenger survey data
+## Task 4: Upload passenger survey data
 
 1. In the Buckets page, click the **passenger-survey** name to load images into. The bucket's details page is displayed.
 2. Under Resources, click Objects to display the list of objects in the bucket.
@@ -61,7 +75,7 @@ In this lab, you will be guided through the following tasks:
     - Wait for the **Abort** to change into **close**
     - Click the **close** button
 
-## Task 4: Create the PAR Link for the "satisfaction\_data" files
+## Task 5: Create the PAR Link for the "satisfaction\_data" files
 
 1. To create a PAR URL
     - Go to menu **Storage —> Buckets**
@@ -85,7 +99,7 @@ In this lab, you will be guided through the following tasks:
 
 9. Save the generated PAR URL; you will need it in the next task
 
-## Task 5: Add passenger-survey data to HeatWave Lakehouse
+## Task 6: Add passenger-survey data to HeatWave Lakehouse
 
 1. Go to Cloud shell to SSH into the new Compute Instance
 
