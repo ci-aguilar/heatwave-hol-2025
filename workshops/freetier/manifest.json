@@ -19,7 +19,7 @@
           },
   
           {
-            "title": "Lab 2: Create Bastion and LAMP Server to Import and test external MySQL Data and OLP Application",
+            "title": "Lab 2: Create Bastion and LAMP Server to Import and test external MySQL Data and OLTP Application",
             "filename": "../../create-lamp-import-db-oltp/create-lamp-import-db-oltp.md"
           },
   
@@ -37,23 +37,22 @@
             "title": "Lab 5:  Add passenger-survey data to Object Storage and load to Lakehouse",
             "filename": "../../do-lakehouse/do-lakehouse.md"  
           },
-        
-          {
-            "title": "Lab 6: Create Oracle Analytics Cloud and Analyze passenger-survey data",
-            "filename": "../../do-oac-advanced/do-oac-advanced.md"
-          }, 
-    
 
           {
-            "title": "Lab 7: Create and test HeatWave AutoML Model",
+            "title": "Lab 6: Create and test HeatWave AutoML Model",
             "filename": "../../create-automl/create-automl.md"
           }, 
 
           {
-            "title": "Lab 8: Add HeatWave AutoML and Lakehouse Application to LAMP Server",
+            "title": "Lab 7: Add HeatWave AutoML and Lakehouse Application to LAMP Server",
             "filename": "../../create-lamp-app-automl/create-lamp-app-automl.md"
           },
-          
+ 
+          {
+            "title": "Lab 8: (Bonus)  Create Oracle Analytics Cloud and Analyze passenger-survey data",
+            "filename": "../../do-oac-advanced/do-oac-advanced.md"
+          }, 
+
           {
             "title": "Lab 9: (Bonus)  Develop MySQL HeatWave Low Code Application with Oracle APEX",
             "filename": "../../apex-heatwave/apex-heatwave.md"
