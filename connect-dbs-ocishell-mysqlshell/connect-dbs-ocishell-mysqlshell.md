@@ -94,7 +94,7 @@ The data loading process involves using MySQL Shell and Object storage to create
     ```
 
     ```bash
-    <copy>util.loadDump("https://objectstorage.us-ashburn-1.oraclecloud.com/p/yXOA3Kwid4uG0oHvHMufbK3cSESmQlU6-0bVB_1vQ8VxR0ggB1m-nDYYOXXy0O5W/n/idazzjlcjqzj/b/airportdb-bucket-112312031/o/airportdb_all/", {progressFile: "progress.json", threads: 16, deferTableIndexes: "all", ignoreVersion: true, loadIndexes:false})</copy>
+    <copy>util.loadDump("https://objectstorage.us-ashburn-1.oraclecloud.com/p/4TAWm0ayQtIPsxmZqDRNt9j3xxG83Ztjv-YVa7czxzdtu7H-rTKivnkUey97YIQG/n/mysqlpm/b/mysql_airport/o/airportdball/", {threads: 8,progressFile: "progress.json", loadIndexes:false,ignoreVersion:true})</copy>
     ```
 
     ![mysql load data](./images/mysql-load-data.png "mysql load data ")
