@@ -77,7 +77,19 @@ In this lab, you will be guided through the following task:
 
     ![mysql shell start](./images/mysql-shell-start.png "mysql shell start ")
 
-3. Run the following Auto Parallel Load command to load the airportdb tables into HeatWave..
+3. Check to see if the airport data has been loaded in the HeatWave cluster. Loaded tables have an AVAIL_RPDGSTABSTATE load status.
+
+     ```bash
+    <copy>USE performance_schema;</copy>
+    ```
+
+     ```bash
+    <copy>SELECT NAME, LOAD_STATUS FROM rpd_tables,rpd_table_id WHERE rpd_tables.ID = rpd_table_id.ID;</copy>
+    ```
+
+    ![mysql performance schema](./images/mysql-heatwave-load-empty.png "mysql heatwave load empty ")
+
+4. Run the following Auto Parallel Load command to load the airportdb tables into HeatWave..
 
      ```bash
     <copy>CALL sys.heatwave_load(JSON_ARRAY('airportdb'), NULL);</copy>
@@ -85,11 +97,11 @@ In this lab, you will be guided through the following task:
 
     ![mysql heatwave load](./images/mysql-heatwave-load.png "mysql heatwave load ")
 
-4. The completed load cluster screen should look like this:
+5. The completed load cluster screen should look like this:
 
     ![mysql heatwave load complete](./images/mysql-heatwave-load-complete.png "mysql heatwave load complete ")
 
-5. Auto provisioning feature highlights:
+6. Auto provisioning feature highlights:
     - a. **Load analysis box:** shows the number of tables/columns being loaded
     - b. **Capacity estimation box:** showis estimated memory and load time
     - c. **Loading table boxes:** use different thread to load based on the table
@@ -98,7 +110,7 @@ In this lab, you will be guided through the following task:
 
     - ![mysql heatwave autopilot loadtable](./images/mysql-heatwave-autopilot-loadtable.png "mysql heatwave autopilot loadtable")
 
-6. Verify that the tables are loaded in the HeatWave cluster. Loaded tables have an AVAIL_RPDGSTABSTATE load status.
+7. Verify that the tables are loaded in the HeatWave cluster. Loaded tables have an AVAIL_RPDGSTABSTATE load status.
 
      ```bash
     <copy>USE performance_schema;</copy>

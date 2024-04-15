@@ -39,20 +39,20 @@
           },
 
           {
-            "title": "Lab 6: Create and test HeatWave AutoML Model",
+            "title": "Lab 6: (Bonus)  Create Oracle Analytics Cloud and Analyze passenger-survey data",
+            "filename": "../../do-oac-advanced/do-oac-advanced.md"
+          }, 
+
+          {
+            "title": "Lab 7: Create and test HeatWave AutoML Model",
             "filename": "../../create-automl/create-automl.md"
           }, 
 
           {
-            "title": "Lab 7: Add HeatWave AutoML and Lakehouse Application to LAMP Server",
+            "title": "Lab 8: Add HeatWave AutoML and Lakehouse Application to LAMP Server",
             "filename": "../../create-lamp-app-automl/create-lamp-app-automl.md"
           },
  
-          {
-            "title": "Lab 8: (Bonus)  Create Oracle Analytics Cloud and Analyze passenger-survey data",
-            "filename": "../../do-oac-advanced/do-oac-advanced.md"
-          }, 
-
           {
             "title": "Lab 9: Stop OCI Services",
             "filename": "../../stop-services/stop-services.md"
