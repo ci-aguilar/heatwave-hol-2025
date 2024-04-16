@@ -32,16 +32,16 @@ In this lab, you will be guided through the following tasks:
     Name:
 
     ```bash
-    <copy>turbo</copy>
+    <copy>root</copy>
     ```
 
     Description:
 
     ```bash
-    <copy>Compartment for Turbocharge Business Insights with MySQL Database workshop </copy>
+    <copy>Compartment for rootcharge Business Insights with MySQL Database workshop </copy>
     ```
 
-4. The **Parent Compartment** should be **turbo** and click **Create Compartment**
+4. The **Parent Compartment** should be **root** and click **Create Compartment**
     ![VCN](./images/compartment-create.png "create the compartment")
 
 
@@ -56,8 +56,8 @@ In this lab, you will be guided through the following tasks:
 2. Click  **Networking**, then **Virtual Cloud Networks**  
     ![menu vcn](./images/home-menu-networking-vcn.png "home menu networking vcn ")
 
-    Select the **turbo** compartment
-    ![vcn wizard Select Turbo compartment](./images/vcn-menu-compartmen-turbo.png "vcn menu compartmen turbo ")
+    Select the **root** compartment
+    ![vcn wizard Select root compartment](./images/vcn-menu-compartmen-root.png "vcn menu compartmen root ")
 
 3. Select the Click **Start VCN Wizard**
     ![vcn start wizard](./images/vcn-wizard-menu.png "vcn wizard menu")
@@ -77,7 +77,7 @@ In this lab, you will be guided through the following tasks:
     <copy>HEATWAVE-VCN</copy>
     ```
 
-    Compartment: Select  **turbo**
+    Compartment: Select  **root**
 
     Your screen should look similar to the following
     ![select compartment](./images/vcn-wizard-compartment.png "select compartment")
@@ -94,7 +94,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 3: Configure security list to allow MySQL incoming connections
 
-1. On HEATWAVE-VCN page under 'Subnets in **turbo** Compartment', click  '**Private Subnet-HEATWAVE-VCN**'
+1. On HEATWAVE-VCN page under 'Subnets in **root** Compartment', click  '**Private Subnet-HEATWAVE-VCN**'
      ![vcn subnet](./images/vcn-details-subnet.png "vcn details subnet")
 
 2. On Private Subnet-HEATWAVE-VCN page under 'Security Lists',  click  '**Security List for Private Subnet-HEATWAVE-VCN**'
@@ -194,7 +194,7 @@ In this lab, you will be guided through the following tasks:
 
 5. Provide basic information for the DB System:
 
-    a. Select Compartment **turbo**
+    a. Select Compartment **root**
 
     b. Enter Name
 

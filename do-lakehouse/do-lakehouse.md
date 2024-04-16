@@ -28,7 +28,7 @@ In this lab, you will be guided through the following tasks:
     - Databases
     - MySQL
     - DB Systems
-2. Choose the **turbo** Compartment. A list of DB Systems is displayed.click the **HEATWAVE-DB** system
+2. Choose the **root** Compartment. A list of DB Systems is displayed.click the **HEATWAVE-DB** system
     ![navigation mysql with instance](./images/navigation-mysql-with-instance.png "navigation mysql with instance")
 
 3. Page down to the Resources menu click the "HeatWave" link and click the **Lakehouse "Enable"** link
@@ -47,11 +47,11 @@ In this lab, you will be guided through the following tasks:
 ## Task 3: Create Object Storage bucket
 
 1. Sign in to OCI using your tenant name, user name and password.
-2. Once signed in select the **turbo** compartment
+2. Once signed in select the **root** compartment
 3. From the Console navigation menu, click **Storage**.
 4. Under Object Storage, click Buckets
 
-    **NOTE:** Ensure the correct Compartment is selected : Select **turbo**
+    **NOTE:** Ensure the correct Compartment is selected : Select **root**
 
     ![cloud storage bucket](./images/cloud-storage-bucket.png "cloud-storage-bucket")
 

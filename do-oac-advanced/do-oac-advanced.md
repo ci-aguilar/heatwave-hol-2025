@@ -29,7 +29,7 @@ In this lab, you will be guided through the following tasks:
 
     ![analytics menu](./images/analytics-menu.png "analytics menu")
 
-2. Select the **turbo** Compartment and Click the **Create Instance** button
+2. Select the **root** Compartment and Click the **Create Instance** button
 
     ![create-instance-oac](./images/create-instance-oac.png "create-instance-oac ")
 

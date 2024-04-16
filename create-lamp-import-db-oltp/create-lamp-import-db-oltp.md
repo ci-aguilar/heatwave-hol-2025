@@ -107,7 +107,7 @@ You will need a compute Instance to connect to your brand new MySQL database.
     Instances
     ![navigation compute](./images/navigation-compute.png "navigation compute")
 
-6. On Instances in **(turbo)** Compartment, click  **Create Instance**
+6. On Instances in **(root)** Compartment, click  **Create Instance**
     ![compute menu create instance](./images/compute-menu-create-instance.png "ccompute menu create instance ")
 
 7. On Create Compute Instance 
@@ -118,7 +118,7 @@ You will need a compute Instance to connect to your brand new MySQL database.
     <copy>HEATWAVE-Client</copy>
     ```
 
-8. Make sure **(turbo)** compartment is selected 
+8. Make sure **(root)** compartment is selected 
 
 9. On Placement, keep the selected Availability Domain
 
