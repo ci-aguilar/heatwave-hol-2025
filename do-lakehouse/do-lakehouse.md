@@ -1,4 +1,4 @@
-# Do HeatWave Lakehouse
+# Create and Test HeatWave Lakehouse
 
 ![mysql heatwave](./images/mysql-heatwave-logo.jpg "mysql heatwave")
 
@@ -20,31 +20,14 @@ In this lab, you will be guided through the following tasks:
 
 - An Oracle Trial or Paid Cloud Account
 - Some Experience with MySQL Shell
-- Completed Lab 4
 
-## Task 1: Enable HeatWave Lakehouse Service
+## Task 1: Download survey file to your local machine
 
-1. Open the navigation menu  
-    - Databases
-    - MySQL
-    - DB Systems
-2. Choose the **root** Compartment. A list of DB Systems is displayed.click the **HEATWAVE-DB** system
-    ![navigation mysql with instance](./images/navigation-mysql-with-instance.png "navigation mysql with instance")
+1. From Windows,linuxc, or mac Local machine click  this  link to download the sample file to your local machine
 
-3. Page down to the Resources menu click the "HeatWave" link and click the **Lakehouse "Enable"** link
+    [https://objectstorage.us-ashburn-1.oraclecloud.com/p/JZjT3fuhsUXWBdOPVvLnP0Mx1ApX9Jj5z5iSxge4uS_lBjRqHv2md6IuRu2MUJUp/n/mysqlpm/b/mysql_airport/o/passenger_survey.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/p/JZjT3fuhsUXWBdOPVvLnP0Mx1ApX9Jj5z5iSxge4uS_lBjRqHv2md6IuRu2MUJUp/n/mysqlpm/b/mysql_airport/o/passenger_survey.csv) 
 
-    ![mysql more actions add cluster](./images/mysql-heatwave-lakehouse-enable.png " mysql more actions add cluster")
-
-
-## Task 2: Download survey file to your local machine
-
-1. From Windows,linux, or mac Local machine click  this  link to download the data file to your local machine
-
-   **Download Passenger survey data file [satisfaction\_data.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/p/_2FkbussY40f4mGzsN9IqdYhhrMQU66hRDlr2XGtfocoUUTyjs0xFc-EqKfP7bQJ/n/mysqlpm/b/mysql_airport/o/satisfaction_data.csv)**
-
-2. Save the file on your local machine. Make sure that the file is saved with extension `.csv`.
-
-## Task 3: Create Object Storage bucket
+## Task 2: Create Object Storage bucket
 
 1. Sign in to OCI using your tenant name, user name and password.
 2. Once signed in select the **root** compartment
@@ -56,33 +39,33 @@ In this lab, you will be guided through the following tasks:
     ![cloud storage bucket](./images/cloud-storage-bucket.png "cloud-storage-bucket")
 
 5. Click Create Bucket. The Create Bucket pane is displayed.
-6. Enter a Bucket Name **passenger-survey**
+6. Enter a Bucket Name **airport-survey**
 7. Under Default Storage Tier, click Standard. Leave all the other fields at their default values.
 8. Click Create
 
     ![press bucket button](./images/press-bucket-button.png "press-bucket-button")
 
-## Task 4: Upload passenger survey data
+## Task 3: Upload airport-survey data
 
-1. In the Buckets page, click the **passenger-survey** name to load images into. The bucket's details page is displayed.
+1. In the Buckets page, click the **airport-survey** name to load images into. The bucket's details page is displayed.
 2. Under Resources, click Objects to display the list of objects in the bucket.
 3. Click Upload. The Upload Objects pane is displayed.
-4. Select the "satisfaction\_data.csv" file from the local folder
-    - Click open to load the "satisfaction\_data.csv"  file
+4. Select the files from the unzippe airport-db local folder
+    - Click open to load the passenger_survey.csv file
     - Click the Upload button
-       ![bucket detail](./images/bucket-detail.png "bucket-detail.png")
+       ![bucket detail](./images/bucket-detail.png"bucket-detail.png")
 
     - Wait for the **Abort** to change into **close**
     - Click the **close** button
 
-## Task 5: Create the PAR Link for the "satisfaction\_data" files
+## Task 4: Create the PAR Link for the "airport-survey" files
 
 1. To create a PAR URL
     - Go to menu **Storage —> Buckets**
      ![Bucket menu](./images/storage-bucket-menu.png "storage bucket menu")
 
-    - Select **passenger-survey**  folder.
-2. Select the first file —> **satisfaction\_data.csv** and click the three vertical dots.
+    - Select **airport-survey**  folder.
+2. Select the first file —> **passenger_survey.csv** and click the three vertical dots.
 3. Click on **Create Pre-Authenticated Request**
 
     ![delivery-orders-1.csv 3 dots](./images/storage-create-par-orders.png "storage create par orders")
@@ -99,17 +82,21 @@ In this lab, you will be guided through the following tasks:
 
 9. Save the generated PAR URL; you will need it in the next task
 
-## Task 6: Add passenger-survey data to HeatWave Lakehouse
+## Task 5: Setup MySQL HeatWave system for Lakehouse processing
 
-1. Go to Cloud shell to SSH into the new Compute Instance
+1. Make sure HeatWave Lakehouse is enabled. If not then execute **Lab 4: Load Airportdb Data into HeatWave**
 
-     (Example: **ssh -i ~/.ssh/id_rsa opc@132.145.170...**) 
+    ![Enabled HeatWave Lakehouse](./images/heatwave-lakehouse-enabled.png " Enabled HeatWave Lakehouse")
+
+2. Go to Cloud shell to SSH into the Compute Instance
+
+    (Example: **ssh -i ~/.ssh/id_rsa opc@132.145.170...**) 
 
     ```bash
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```
 
-2. Connect To  mysql shell. On command Line, use the following command:
+3. Connect to the HeatWave Database using MySQL Shell with the following command:
 
     ```bash
     <copy>mysqlsh -uadmin -p -h 10.0.1... --sql </copy>
@@ -117,7 +104,13 @@ In this lab, you will be guided through the following tasks:
 
     ![MySQL Shell Connect](./images/mysql-shell-login.png " mysql shell login")
 
-3. List the schemas in your heatwave instance
+4. Change to SQL mode
+
+    ```bash
+    <copy>\sql</copy>
+    ```
+
+5. List schemas in your heatwave instance
 
     ```bash
     <copy>show databases;</copy>
@@ -125,7 +118,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Databse Schemas](./images/list-schemas-after.png "list schemas after")
 
-3. Change to the airportdb database
+6. Change to the airportdb database
 
     Enter the following command at the prompt
 
@@ -133,74 +126,150 @@ In this lab, you will be guided through the following tasks:
     <copy>USE airportdb;</copy>
     ```
 
-4. Define the External Table to access the passenger\_survey data. First modify the command with the saved Pre-Authenticated Request as indicated. Then, execute it.
+7. To see a list of the tables available in the airportdb schema
 
     Enter the following command at the prompt
 
     ```bash
-    <copy>CREATE TABLE `airportdb`.`passenger_survey`(
-  `id` int NOT  NULL,
-  `satisfaction_v2` text,
-  `Gender` text,
-  `Customer_Type` text,
-  `Age` int  NOT  NULL,
-  `Type_of_Travel` text,
-  `Class` text,
-  `Flight_Distance` int  NOT  NULL,
-  `Seat_comfort` int  NOT  NULL,
-  `Departure_Arrival_time_convenient` int NOT  NULL,
-  `Food_and_drink` int  NOT  NULL,
-  `Gate_location` int  NOT  NULL,
-  `Inflight_wifi_service` int NOT  NULL,
-  `Inflight_entertainment` int  NOT  NULL,
-  `Online_support` int  NOT  NULL,
-  `Ease_of_Online_booking` int  NOT  NULL,
-  `On_board_service` int  NOT  NULL,
-  `Leg_room_service` int  NOT  NULL,
-  `Baggage_handling` int  NOT  NULL,
-  `Checkin_service` int  NOT  NULL,
-  `Cleanliness` int  NOT  NULL,
-  `Online_boarding` int NOT  NULL,
-  `Departure_Delay_in_Minutes` int  NOT  NULL,
-  `Arrival_Delay_in_Minutes` int  NOT  NULL
-) ENGINE=lakehouse SECONDARY_ENGINE=rapid ENGINE_ATTRIBUTE='{
-"file": [{
-    "par": "<Your Pre-Authenticated Request>"
-}],
-"dialect": {
-    "format": "csv",
-    "field_delimiter": ",",
-    "record_delimiter": "\\n",
-            "skip_rows": 1
-}
-}';</copy>
+    <copy>show tables;</copy>
     ```
-5. You will see the following result
- ![Lakehouse create table](./images/lakehouse-create-table.png "Lakehouse create table")
 
-6. So far HeatWave only knows where to find the data for the External Table.  Instruct HeatWave to start loading the data from the CSV file.
+    You are now ready to use Autoload to load a table from the object store into MySQL HeatWave
+
+## Task 6: Run Autoload to infer the schema and estimate capacity required for the DELIVERY table in the Object Store
+
+1. The survey information is in the passenger_survey.csv file in object store for which we have created a PAR URL in the earlier task. We will load the file for the passenger_survey table into MySQL HeatWave. Enter the following commands one by one and hit Enter.
+
+2. This sets the schema we will load table data into. Don’t worry if this schema has not been created. Autopilot will generate the commands for you to create this schema if it doesn’t exist.
 
     ```bash
-    <copy>ALTER TABLE `airportdb`.`passenger_survey` SECONDARY_LOAD;</copy>
+    <copy>SET @db_list = '["airportdb"]';</copy>
     ```
 
-7. Check the number of rows loaded into the table.
+3. This sets the parameters for the table name we want to load data into and other information about the source file in the object store. Substitute the **(PAR URL)** below with the one you generated in the previous task:
+
+    ```bash
+    <copy>SET @dl_tables = '[{
+    "db_name": "airportdb",
+    "tables": [{
+        "table_name": "passenger_survey",
+        "dialect": 
+    {
+    "skip_rows": 1,
+    "format": "csv",
+    "field_delimiter": ",",
+    "record_delimiter": "\\n"
+    },
+    "file": [{"par": "(PAR URL)"}]}]  }]';</copy>
+    ```
+
+    - It should look like the following example (Be sure to include the PAR Link inside at of quotes("")):
+
+        ![Load script set table](./images/load-script-set-table.png "Load script set table")
+
+    - Run the set table script now.
+
+4. This command populates all the options needed by Autoload:
+
+    ```bash
+    <copy>SET @options = JSON_OBJECT('mode', 'dryrun',  'policy', 'disable_unsupported_columns',  'external_tables', CAST(@dl_tables AS JSON));</copy>
+    ```
+
+5. Run this Autoload command:
+
+    ```bash
+    <copy>CALL sys.heatwave_load(@db_list, @options);</copy>
+    ```
+
+6. Once Autoload completes running, its output has several pieces of information:
+    - a. Whether the table exists in the schema you have identified.
+    - b. Auto schema inference determines the number of columns in the table.
+    - c. Auto schema sampling samples a small number of rows from the table and determines the number of rows in the table and the size of the table.
+    - d. Auto provisioning determines how much memory would be needed to load this table into HeatWave and how much time loading this data take.
+
+7. Autoload also generated a statement lke the one below. Execute this statement now.
+
+    ```bash
+    <copy>SELECT log->>"$.sql" AS "Load Script" FROM sys.heatwave_autopilot_report WHERE type = "sql" ORDER BY id;</copy>
+    ```
+
+    ![Dryrun script](./images/load-script-dryrun.png "load script dryrun")
+
+8. The execution result conatins the SQL statements needed to create the table and then load this table data from the Object Store into HeatWave.
+
+    ![create passenger survey script](./images/create-passenger-survey-script.png "create passenger survey script")
+
+9. Copy the **CREATE TABLE** command from the results. It should look like the following example
+
+    ![create passenger survey script copy](./images/create-passenger-survey-script-copy.png "create passenger survey script copy")  
+
+10. Modify the **CREATE TABLE** command to replace the generic column names, such as **col\_1**, with descriptive column names. Use the following values:
+
+    - `col_1 : id`
+    - `col_2 : customer_type`
+    - `col_3 : travel_type`
+    - `col_4 : departure_delay`
+    - `col_5 : baggage_handling`
+    - `col_6 : satisfaction`
+
+    **Important** Substitute the **(PAR URL)** value with the one you generated in the previous task
+
+11. Your modified **CREATE TABLE** command  should look similar to  the following example PAR value is not your valid PAR:
+
+    ![create passenger survey script update](./images/create-passenger-survey-script-update.png "create passenger survey script update")  
+
+12. Execute the modified **CREATE TABLE** command to create the passenger_survey table.
+
+13. The create command and result should look lie this
+
+    ![Delivery Table create](./images/create-survey-table.png "create delivery table")
+
+## Task 7: Load complete passenger_survey table from Object Store into MySQL HeatWave
+
+1. Run this command to see the created table structure .
+
+    ```bash
+    <copy>desc passenger_survey;</copy>
+    ```
+
+    ![Passenger Survey Table](./images/passenger-survey-table.png "Passenger Survey Table")
+
+2. Now load the data from the Object Store into the passenger_survey table.
+
+    ```bash
+    <copy> ALTER TABLE `airportdb`.`passenger_survey` SECONDARY_LOAD; </copy>
+    ```
+
+3. Once Autoload completes, check the number of rows loaded into the table.
 
     ```bash
     <copy>select count(*) from passenger_survey;</copy>
     ```
 
-8. View a sample of the data in Lakehouse.
+4. View a sample of the data in the table.
 
     ```bash
-    <copy>select id, satisfaction_v2, Gender, Customer_Type  from passenger_survey limit 5;</copy>
+    <copy>select * from passenger_survey limit 5;</copy>
     ```
+
+    a. Join the passenger_survey table with another table in the schema
+
+    ```bash
+    <copy> select p.* , ps.* from passenger p 
+    join passenger_survey ps on p.passenger_id = ps.ID
+    where p.passenger_id = 28; </copy>
+    ```
+
+5. Your output for steps 2 thru 5 should look like this:
+
+    ![Passenger Survey Output](./images/passenger-survey-output.png "Passenger Survey Output")
+
+6. Your passenger_survey table is now ready to be used in queries with other tables.
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- **Author** - Perside Foster, MySQL Solution Engineering
-
-- **Contributors** - Abhinav Agarwal, Senior Principal Product Manager, Nick Mader, MySQL Global Channel Enablement & Strategy Manager
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2023
+- **Author** - Perside Foster, MySQL Principal Solution Engineering
+- **Contributors** - Mandy Pang, MySQL Principal Product Manager,  Nick Mader, MySQL Global Channel Enablement & Strategy Manager, Selena Sanchez, MySQL Solution Engineering
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, March 2024

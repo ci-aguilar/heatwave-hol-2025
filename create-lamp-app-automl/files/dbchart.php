@@ -1,5 +1,5 @@
 <?php
- $con = mysqli_connect('10.0.1.183','admin','Welcome#123','airportdb');
+ $con = mysqli_connect('10.0.1.186','admin','Welcome#123','airportdb');
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -96,15 +96,15 @@ function drawChart() {
 <div class="centered">
 <?php
 
-$link = mysqli_connect('10.0.1.183','admin','Welcome#123','airportdb');
+$link = mysqli_connect('10.0.1.186','admin','Welcome#123','airportdb');
 #require_once "config_2.php";
-$query = "SELECT satisfaction_v2, Customer_Type, Type_of_Travel, count(*) Departure_Delay_in_Minutes
-FROM airportdb.passenger_survey where Departure_Delay_in_Minutes > 120 group by Customer_Type,Type_of_Travel,satisfaction_v2
-order by satisfaction_v2 desc,Customer_Type, Type_of_Travel;";
+$query = "SELECT satisfaction,customer_type, travel_type, AVG(departure_delay) departure_delay,count(*) as nb_psgr
+FROM airportdb.passenger_survey
+group by customer_type,travel_type,satisfaction;";
 if ($stmt = $link->prepare($query)) {
    $stmt->execute();
-   $stmt->bind_result($sastifaction,$customer_type, $travel_type,$departure_delay);
-echo "<h2>Customer response based on 120 second Delayed flight</h2>";
+   $stmt->bind_result($sastifaction,$customer_type, $travel_type,$departure_delay,$nb_psgr);
+echo "<h2>Customer response on Delayed flight</h2>";
 
    echo "<table>";
     echo "<tr>";
@@ -112,6 +112,7 @@ echo "<h2>Customer response based on 120 second Delayed flight</h2>";
     echo "<th>customer_type</th>";
     echo "<th>travel_type</th>";
     echo "<th>departure_delay</th>";
+	echo "<th>nb_psgr</th>";
 echo "</tr>";
 
 while ($stmt->fetch()) {
@@ -120,6 +121,7 @@ while ($stmt->fetch()) {
        echo "<td>" . $customer_type ."</td>";
        echo "<td>" . $travel_type ."</td>";
        echo "<td>" . $departure_delay ."</td>";
+	   echo "<td>" . $nb_psgr ."</td>";
     echo "</tr>";
  }
 
@@ -128,6 +130,44 @@ $stmt->close();
 ?>
 </div>
 </div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
