@@ -152,15 +152,14 @@ In this lab, you will be guided through the following tasks:
     <copy>SET @dl_tables = '[{
     "db_name": "airportdb",
     "tables": [{
-        "table_name": "passenger_survey",
-        "dialect": 
-    {
-    "skip_rows": 1,
-    "format": "csv",
-    "field_delimiter": ",",
-    "record_delimiter": "\\n"
-    },
-    "file": [{"par": "(PAR URL)"}]}]  }]';</copy>
+    "table_name": "passenger_survey",
+    "dialect": {
+        "format": "csv",
+        "field_delimiter": ",",
+        "record_delimiter": "\\r\\n",
+        "has_header": true,
+        "is_strict_mode": false},
+        "file": [{"par": "(PAR URL)"}]}]  }]';</copy>
     ```
 
     - It should look like the following example (Be sure to include the PAR Link inside at of quotes("")):
@@ -203,24 +202,9 @@ In this lab, you will be guided through the following tasks:
 
     ![create passenger survey script copy](./images/create-passenger-survey-script-copy.png "create passenger survey script copy")  
 
-10. Modify the **CREATE TABLE** command to replace the generic column names, such as **col\_1**, with descriptive column names. Use the following values:
+10. Execute the modified **CREATE TABLE** command to create the passenger_survey table.
 
-    - `col_1 : id`
-    - `col_2 : customer_type`
-    - `col_3 : travel_type`
-    - `col_4 : departure_delay`
-    - `col_5 : baggage_handling`
-    - `col_6 : satisfaction`
-
-    **Important** Substitute the **(PAR URL)** value with the one you generated in the previous task
-
-11. Your modified **CREATE TABLE** command  should look similar to  the following example PAR value is not your valid PAR:
-
-    ![create passenger survey script update](./images/create-passenger-survey-script-update.png "create passenger survey script update")  
-
-12. Execute the modified **CREATE TABLE** command to create the passenger_survey table.
-
-13. The create command and result should look lie this
+11. The create command and result should look lie this
 
     ![Delivery Table create](./images/create-survey-table.png "create delivery table")
 
