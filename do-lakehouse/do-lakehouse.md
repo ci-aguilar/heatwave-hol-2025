@@ -23,9 +23,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 1: Download survey file to your local machine
 
-1. From Windows,linuxc, or mac Local machine click  this  link to download the sample file to your local machine
-
-    [https://objectstorage.us-ashburn-1.oraclecloud.com/p/JZjT3fuhsUXWBdOPVvLnP0Mx1ApX9Jj5z5iSxge4uS_lBjRqHv2md6IuRu2MUJUp/n/mysqlpm/b/mysql_airport/o/passenger_survey.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/p/JZjT3fuhsUXWBdOPVvLnP0Mx1ApX9Jj5z5iSxge4uS_lBjRqHv2md6IuRu2MUJUp/n/mysqlpm/b/mysql_airport/o/passenger_survey.csv) 
+1. Click on this link to **Download file [passenger_survey.csv](files/passenger_survey.csv)**  to your local machine
 
 ## Task 2: Create Object Storage bucket
 
@@ -50,7 +48,7 @@ In this lab, you will be guided through the following tasks:
 1. In the Buckets page, click the **airport-survey** name to load images into. The bucket's details page is displayed.
 2. Under Resources, click Objects to display the list of objects in the bucket.
 3. Click Upload. The Upload Objects pane is displayed.
-4. Select the files from the unzippe airport-db local folder
+4. Select the **passenger_survey.csv** file from your local machine
     - Click open to load the passenger_survey.csv file
     - Click the Upload button
        ![bucket detail](./images/bucket-detail.png"bucket-detail.png")
