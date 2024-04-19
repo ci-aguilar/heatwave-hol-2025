@@ -1,0 +1,69 @@
+{
+  "workshoptitle": "MySQL HeatWave Airport OLTP/OLAP/ML/Lakehouse - Oracle HOL",
+      "help": "livelabs-help-oci_us@oracle.com",
+      "tutorials": [
+          {
+              "title": "Introduction",
+              "description": "The Introduction is always second. The title and contents menu title match for the Introduction.",
+              "filename": "../../introduction/introduction.md"
+          },
+          {
+              "title": "Get Started",
+              "description": "This is the prerequisites for customers using Free Trial and Paid tenancies. The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+              "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+          },
+     
+          {
+              "title": "Lab 1: Create MySQL HeatWave Database System",
+              "filename": "../../create-vcn-dbs/create-vcn-dbs.md"
+          },
+  
+          {
+            "title": "Lab 2: Create Bastion Server and Import MySQL Data",
+            "filename": "../../create-compute-import-db/create-compute-import-db.md"
+          },
+  
+          {
+              "title": "Lab 3: Setup HeatWave Cluster for OLAP/AutoML/Lakeshouse",
+              "filename": "../../load-heatwave/load-heatwave.md"
+          },
+                    
+          {
+            "title": "Lab 4: Run Query Comparissons Between MySQL and HeatWave Cluster",
+            "filename": "../../run-queries-only/run-queries-only.md"
+          },
+
+          {
+            "title": "Lab 5: Create and test HeatWave AutoML Model",
+            "filename": "../../create-automl/create-automl.md"
+          }, 
+
+          
+          {
+            "title": "Lab 6 (BONUS):  Add passenger-survey data to Object Storage and load to Lakehouse",
+            "filename": "../../do-lakehouse/do-lakehouse.md"  
+          },
+
+          {
+            "title": "Lab 7 (BONUS): Create Oracle Analytics Cloud and Analyze passenger-survey data",
+            "filename": "../../do-oac-advanced/do-oac-advanced.md"
+          }, 
+
+          {
+            "title": "Lab 8 (BONUS): Add HeatWave AutoML and Lakehouse Application to LAMP Server",
+            "filename": "../../create-lamp-app-automl/create-lamp-app-automl.md"
+          },
+ 
+          {
+            "title": "Lab 9 (BONUS): Stop OCI Services",
+            "filename": "../../stop-services/stop-services.md"
+          },
+
+          {
+              "title": "Need Help?",
+              "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+              "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+          }
+      ]
+  }
+  
