@@ -24,14 +24,15 @@
           },
   
           {
-              "title": "Lab 3: Setup HeatWave Cluster for OLAP/AutoML/Lakeshouse",
-              "filename": "../../load-heatwave/load-heatwave.md"
+              "title": "Lab 3: Load Data into HeatWave",
+              "filename": "../../load-heatwave-cluster-data/load-heatwave-cluster-data.md"
           },
                     
           {
             "title": "Lab 4: Run Query Comparissons Between MySQL and HeatWave Cluster",
             "filename": "../../run-queries-only/run-queries-only.md"
           },
+          
 
           {
             "title": "Lab 5 (BONUS): Create and test HeatWave AutoML Model",
@@ -40,22 +41,28 @@
 
 
           {
-            "title": "Lab 6 (BONUS): Install LAMP Server",
-            "filename": "../../create-lamp/create-lamp.md"
-          },
-
-          {
-            "title": "Lab 7 (BONUS):  Add passenger-survey data to Object Storage and load to Lakehouse",
+            "title": "Lab 6 (BONUS):  Add passenger-survey data to Object Storage and load to Lakehouse",
             "filename": "../../do-lakehouse/do-lakehouse.md"  
           },
 
           {
-            "title": "Lab 8 (BONUS): Create Oracle Analytics Cloud and Analyze passenger-survey data",
+            "title": "Lab 7 (BONUS): Create Oracle Analytics Cloud and Analyze passenger-survey data",
             "filename": "../../do-oac-advanced/do-oac-advanced.md"
           }, 
  
+          
           {
-            "title": "Lab 9: Stop OCI Services",
+            "title": "Lab 8 (BONUS): Install LAMP Server",
+            "filename": "../../create-lamp/create-lamp.md"
+          },
+
+          {
+            "title": "Lab 9 (BONUS): Add AutoML and Lakehouse Lamp App",
+            "filename": "../../create-lamp-app-automl/create-lamp-app-automl.md"
+          },
+
+          {
+            "title": "Lab 10: Stop OCI Services",
             "filename": "../../stop-services/stop-services.md"
           },
 
