@@ -154,7 +154,7 @@ In this lab, you will be guided through the following tasks:
     "dialect": {
         "format": "csv",
         "field_delimiter": ",",
-        "record_delimiter": "\\r\\n",
+        "record_delimiter": "\\n",
         "has_header": true,
         "is_strict_mode": false},
         "file": [{"par": "(PAR URL)"}]}]  }]';</copy>
