@@ -46,8 +46,8 @@
           },
 
           {
-            "title": "Lab 7 (BONUS): Create Oracle Analytics Cloud and Analyze passenger-survey data",
-            "filename": "../../do-oac-advanced/do-oac-advanced.md"
+            "title": "Lab 7 (BONUS): Set Up an AI Chat with MySQL HeatWave Generative AI",
+            "filename": "../../load-heatwave/Gen_AI_and_VectorStore.md"
           }, 
  
           
