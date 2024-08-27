@@ -36,7 +36,7 @@ In this lab, you will be guided through the following task:
        ```
 
 2. Then, add your query to HeatWave Chat by using the heatwave_chat method:
-**call sys.heatwave_chat("<YourQuery>");**
+**call sys.heatwave\_chat("<YourQuery>");**
 For example:
 
        ```bash
@@ -112,21 +112,21 @@ For example:
 2. Name your table\_name with a name related to your text file, under **"table\_name": "tablename"**
 3. Paste the **PAR** url copied from the task 2 and replace it under **"par": "https ://objectstorage.us-ashbu... "**
 
-   ```bash
-   <copy>
-   SET @dl_tables = '[{
-   "db_name": "vectordb1",
-   "tables": [{
-   "table_name": "HeatwaveInfo",
-   "dialect": {
-   "format": "pdf"
-   },
-   "file": [{
-   "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/BSbTtQqFXryq2fvx43cM3ueVK6F8ZfHIvycYOhwuW7NFESkvVlfVa3l21TG... "
-   }]
-   }]
-   }]'; </copy>
-   ```
+       ```bash
+       <copy>
+       SET @dl_tables = '[{
+       "db_name": "vectordb1",
+       "tables": [{
+       "table_name": "HeatwaveInfo",
+       "dialect": {
+       "format": "pdf"
+       },
+       "file": [{
+       "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/BSbTtQqFXryq2fvx43cM3ueVK6F8ZfHIvycYOhwuW7NFESkvVlfVa3l21TG... "
+       }]
+       }]
+       }]'; </copy>
+       ```
 
 4. On command Line, Run the next command to SET a variable that stores the database list
 
@@ -166,7 +166,7 @@ For example:
 ## Task 7: Compare the chat generated responses between general training and RAG responses
 
 1. Re run your previous queries to HeatWave Chat by using the heatwave_chat method:
-**call sys.heatwave_chat("<YourQuery>");**
+**call sys.heatwave\_chat("<YourQuery>");**
 For example:
 
        ```bash
