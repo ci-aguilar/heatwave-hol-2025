@@ -6,6 +6,10 @@
 
 In this Lab, you will be guided into the process of setting up an AI Chat, leveraging MySQL Heatwave Generative AI which enable us to use an embeded LLM (Large Language Model) inside MySQL Database to start using a chatbot and later erich the provided answers with RAG (Retreival Augmented Generation), by providing text based documents as context for the answer generation.
 
+When you run HeatWave Chat, it automatically loads the LLM model. If you don’t have a vector store set up, then
+HeatWave Chat uses information available in public data sources to generate a response for your query. However, if
+you have a vector store set up, then HeatWave Chat by default performs a global context search across all the loaded
+vector store tables to generate a response for your query.
 
 _Estimated Time:_ 10 minutes
 
@@ -22,10 +26,26 @@ In this lab, you will be guided through the following task:
 - Some Experience with MySQL Shell
 - Completed Lab 6
 
-## Task 1: Use MySQL Heatwave chat function to generate text-based content
+## Task 1: Running the Chat. Use MySQL Heatwave chat function to generate text-based content
 
 
+1. To delete previous chat output and state if any, reset the @chat_options session variable:
 
+       ```bash
+       <copy>set @chat_options=NULL; </copy>
+       ```
+
+2. Then, add your query to HeatWave Chat by using the heatwave_chat method:
+**call sys.heatwave_chat("<YourQuery>");**
+For example:
+
+       ```bash
+       <copy>call sys.heatwave_chat("What is HeatWave AutoML?"); </copy>
+       ```
+
+3. You will get a response based on the LLM general training.
+
+   
 
 ## Task 2: Add Text Based documents on OCI Object Store Buckets
 
@@ -81,10 +101,10 @@ In this lab, you will be guided through the following task:
     ![mysql shell start](./images/mysql-shell-start.png "mysql shell start ")
 
 3. On command Line, Run the next command to create a database called **vectordb1**:
-
-   ```bash
-   <copy>CREATE SCHEMA vectordb1; </copy>
-   ```
+   
+       ```bash
+       <copy>CREATE SCHEMA vectordb1; </copy>
+       ```
      
 ## Task 5: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
 
@@ -145,6 +165,16 @@ In this lab, you will be guided through the following task:
 
 ## Task 7: Compare the chat generated responses between general training and RAG responses
 
+1. Re run your previous queries to HeatWave Chat by using the heatwave_chat method:
+**call sys.heatwave_chat("<YourQuery>");**
+For example:
+
+       ```bash
+       <copy>call sys.heatwave_chat("What is HeatWave AutoML?"); </copy>
+       ```
+
+2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
+   
 
 You may now **proceed to the next lab**
 
