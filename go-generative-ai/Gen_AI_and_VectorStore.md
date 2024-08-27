@@ -49,10 +49,12 @@ For example:
 
 ## Task 2: Add Text Based documents on OCI Object Store Buckets
 
-1. In the Buckets page, click the **Your-Bucket-Name** name to load images into. The bucket's details page is displayed.
-2. Under Resources, click Objects to display the list of objects in the bucket.
-3. Click Upload under the default or custom folder. The Upload Objects pane is displayed.
-4. Select a Text Based Document **Your-Document.pdf** file from your local machine
+1. Click on this link to **Download file [HeatwaveInfo.pdf](files/go-generative-ai/files/heatwave-genai-technical-brief.pdf)**  to your local machine. **This PDF file can be used to upload and create the vector table for the next Tasks**
+
+2. In the Buckets page, click the **Your-Bucket-Name** name to load images into. The bucket's details page is displayed.
+3. Under Resources, click Objects to display the list of objects in the bucket.
+4. Click Upload under the default or custom folder. The Upload Objects pane is displayed.
+5. Select a Text Based Document **Your-Document.pdf** file from your local machine
     - Click open to load the **Your-Document.pdf** file
     - Click the Upload button
       
