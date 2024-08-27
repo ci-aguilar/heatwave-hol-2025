@@ -28,7 +28,7 @@ In this lab, you will be guided through the following task:
 2. Under Resources, click Objects to display the list of objects in the bucket.
 3. Click Upload under the default or custom folder. The Upload Objects pane is displayed.
 4. Select a Text Based Document **Your-Document.pdf** file from your local machine
-    - Click open to load the passenger_survey.csv file
+    - Click open to load the **Your-Document.pdf** file
     - Click the Upload button
       
        ![bucket detail](./images/genai-bucket-detail.png"bucket-detail.png")
@@ -77,17 +77,17 @@ In this lab, you will be guided through the following task:
 
 3. On command Line, Run the next command to create a database called **vectordb1**:
 
-         ```bash
+        ```bash
         <copy>CREATE SCHEMA vectordb1; </copy>
         ```
      
 ## Task 4: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
 
 1. On command Line, Run the next command to SET a variable that stores the table and files parameter:
-2. Name your table\_name with a name related to your text file, under **"table\_name": "\<tablename\>"**
+2. Name your table\_name with a name related to your text file, under **"table\_name": "tablename"**
 3. Paste the **PAR** url copied from the task 2 and replace it under **"par": "https ://objectstorage.us-ashbu... "**
 
-       ```bash
+        ```bash
         <copy>
         SET @dl_tables = '[{
         "db_name": "vectordb1",
@@ -101,41 +101,42 @@ In this lab, you will be guided through the following task:
         }]
         }]
         }]'; </copy>
-       ```
+        ```
 
 4. On command Line, Run the next command to SET a variable that stores the database list
 
-         ```bash
-        <copy>SET @db_list = '["vectordb1"]'; </copy>
-        ```
+    ```bash
+    <copy>SET @db_list = '["vectordb1"]'; </copy>
+    ```
 5. On command Line, Run the next command to SET a variable that stores the procedure options
 
-        ```bash
-        <copy>SET @options = JSON_OBJECT(
-        'output', 'normal',
-        'policy', 'disable_unsupported_columns',
-        'external_tables', CAST(@dl_tables AS JSON)
-        ); </copy>
-        ```
+    ```bash
+    <copy>
+    SET @options = JSON_OBJECT(
+    'output', 'normal',
+    'policy', 'disable_unsupported_columns',
+    'external_tables', CAST(@dl_tables AS JSON)
+    ); </copy>
+    ```
 
 7. On command Line, Run the next command to load the file into your **database.table** using the previous options
 
-       ```bash
-        <copy>CALL sys.heatwave_load(@db_list, @options); </copy>
-        ```
+    ```bash
+    <copy>CALL sys.heatwave_load(@db_list, @options); </copy>
+    ```
 
 ## Task 5: Validate your new vector table with the text based document content
 
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
-     ```bash
-     <copy>SELECT COUNT(*) FROM vectordb1.HeatwaveInfo; </copy>
-     ```
+    ```bash
+    <copy>SELECT COUNT(*) FROM vectordb1.HeatwaveInfo; </copy>
+    ```
 2. On command Line, Run the next command to inspect the content of a row in your **database.table**
 
-     ```bash
-     <copy>SELECT * FROM vectordb1.HeatwaveInfo LIMIT 1\G </copy>
-     ```
+    ```bash
+    <copy>SELECT * FROM vectordb1.HeatwaveInfo LIMIT 1\G </copy>
+    ```
 
 You may now **proceed to the next lab**
 
