@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In this lab, you will create and configure a MySQL DB System.
+In this lab, you will create and configure a MySQL DB System with HeatWave Cluster.
 For more details see OCI Document:
 [Creating a DB System Using the Console](https://docs.oracle.com/en-us/iaas/mysql-database/doc/creating-db-system1.html#GUID-AE89C67D-E1B1-4F11-B934-8B0564B4FC69).
 
