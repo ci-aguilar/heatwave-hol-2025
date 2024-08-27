@@ -187,6 +187,6 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- **Author** - Cristian Aguilar, MySQL Principal Solution Engineering
+- **Author** - Cristian Aguilar, MySQL Staff Solution Engineering
 - **Contributors** - Perside Foster, MySQL Solution Engineering
-- **Last Updated By/Date** - Cristian Aguilar, MySQL Principal Solution Engineering, July 2024
+- **Last Updated By/Date** - Cristian Aguilar, MySQL Staff Solution Engineering, August 2024

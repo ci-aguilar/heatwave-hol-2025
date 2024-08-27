@@ -247,4 +247,4 @@ You may now **proceed to the next lab**
 
 - **Contributors** - Salil Pradhan, Principal Product Manager,
 Nick Mader, MySQL Global Channel Enablement & Strategy Manager
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, May 2022
+- **Last Updated By/Date** - Cristian Aguilar, MySQL Staff Solution Engineering, August 2024
