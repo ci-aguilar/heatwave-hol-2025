@@ -35,18 +35,18 @@
           
 
           {
-            "title": "Lab 5 (BONUS): Create and test HeatWave AutoML Model",
+            "title": "Lab 5: Create and test HeatWave AutoML Model",
             "filename": "../../create-automl/create-automl.md"
           }, 
 
 
           {
-            "title": "Lab 6 (BONUS):  Add passenger-survey data to Object Storage and load to Lakehouse",
+            "title": "Lab 6:  Add passenger-survey data to Object Storage and load to Lakehouse",
             "filename": "../../do-lakehouse/do-lakehouse.md"  
           },
 
           {
-            "title": "Lab 7 (BONUS): Set Up an AI Chat with MySQL HeatWave Generative AI",
+            "title": "Lab 7: Set Up an AI Chat with MySQL HeatWave Generative AI",
             "filename": "../../load-heatwave/Gen_AI_and_VectorStore.md"
           }, 
  
