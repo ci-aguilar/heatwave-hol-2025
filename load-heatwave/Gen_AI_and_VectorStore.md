@@ -22,7 +22,12 @@ In this lab, you will be guided through the following task:
 - Some Experience with MySQL Shell
 - Completed Lab 6
 
-## Task 1: Add Text Based documents on OCI Object Store Buckets
+## Task 1: Use MySQL Heatwave chat function to generate text-based content
+
+
+
+
+## Task 2: Add Text Based documents on OCI Object Store Buckets
 
 1. In the Buckets page, click the **Your-Bucket-Name** name to load images into. The bucket's details page is displayed.
 2. Under Resources, click Objects to display the list of objects in the bucket.
@@ -36,7 +41,7 @@ In this lab, you will be guided through the following task:
     - Wait for the **Abort** to change into **close**
     - Click the **close** button
 
-## Task 2: Create the PAR Link for the files
+## Task 3: Create the PAR Link for the files
 
 1. To create a PAR URL
     - Go to menu **Storage —> Buckets**
@@ -62,46 +67,46 @@ In this lab, you will be guided through the following task:
 
 10. **Save the generated PAR URL**; you will need it in a task later
 
-## Task 3: Create the vector store database for the vector tables
+## Task 4: Create the vector store database for the vector tables
 
 1. Connect to OCI Cloud Shell
     ![mysql shell open drawer](./images/cloudshell-console-drawer.png "cloudshell console drawer")
 
 2. On command Line, connect to the HeatWave Database using the MySQL Shell client tool with the following command:
 
-       ```bash
-        <copy>mysqlsh -uadmin -p -h 10.0.1... --sql </copy>
-       ```
+   ```bash
+   <copy>mysqlsh -uadmin -p -h 10.0.1... --sql </copy>
+   ```
 
     ![mysql shell start](./images/mysql-shell-start.png "mysql shell start ")
 
 3. On command Line, Run the next command to create a database called **vectordb1**:
 
-        ```bash
-        <copy>CREATE SCHEMA vectordb1; </copy>
-        ```
+   ```bash
+   <copy>CREATE SCHEMA vectordb1; </copy>
+   ```
      
-## Task 4: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
+## Task 5: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
 
 1. On command Line, Run the next command to SET a variable that stores the table and files parameter:
 2. Name your table\_name with a name related to your text file, under **"table\_name": "tablename"**
 3. Paste the **PAR** url copied from the task 2 and replace it under **"par": "https ://objectstorage.us-ashbu... "**
 
-        ```bash
-        <copy>
-        SET @dl_tables = '[{
-        "db_name": "vectordb1",
-        "tables": [{
-        "table_name": "HeatwaveInfo",
-        "dialect": {
-        "format": "pdf"
-        },
-        "file": [{
-        "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/BSbTtQqFXryq2fvx43cM3ueVK6F8ZfHIvycYOhwuW7NFESkvVlfVa3l21TG... "
-        }]
-        }]
-        }]'; </copy>
-        ```
+   ```bash
+   <copy>
+   SET @dl_tables = '[{
+   "db_name": "vectordb1",
+   "tables": [{
+   "table_name": "HeatwaveInfo",
+   "dialect": {
+   "format": "pdf"
+   },
+   "file": [{
+   "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/BSbTtQqFXryq2fvx43cM3ueVK6F8ZfHIvycYOhwuW7NFESkvVlfVa3l21TG... "
+   }]
+   }]
+   }]'; </copy>
+   ```
 
 4. On command Line, Run the next command to SET a variable that stores the database list
 
@@ -125,7 +130,7 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.heatwave_load(@db_list, @options); </copy>
     ```
 
-## Task 5: Validate your new vector table with the text based document content
+## Task 6: Validate your new vector table with the text based document content
 
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
@@ -137,6 +142,9 @@ In this lab, you will be guided through the following task:
     ```bash
     <copy>SELECT * FROM vectordb1.HeatwaveInfo LIMIT 1\G </copy>
     ```
+
+## Task 7: Compare the chat generated responses between general training and RAG responses
+
 
 You may now **proceed to the next lab**
 
