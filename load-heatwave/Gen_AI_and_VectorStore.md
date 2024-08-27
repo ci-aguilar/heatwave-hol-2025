@@ -74,9 +74,9 @@ In this lab, you will be guided through the following task:
 
 2. On command Line, connect to the HeatWave Database using the MySQL Shell client tool with the following command:
 
-   ```bash
-   <copy>mysqlsh -uadmin -p -h 10.0.1... --sql </copy>
-   ```
+       ```bash
+       <copy>mysqlsh -uadmin -p -h 10.0.1... --sql </copy>
+       ```
 
     ![mysql shell start](./images/mysql-shell-start.png "mysql shell start ")
 
