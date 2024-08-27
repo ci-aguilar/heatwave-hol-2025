@@ -219,7 +219,7 @@ In this lab, you will be guided through the following tasks:
 
 10. Click on Show Advanced Options
 
-11. **IMPORTANT** Go to the Configuration tab. Click on **Select a MySQL version** and select the latest MySQL version of the DB system.
+11. **IMPORTANT** Go to the Configuration tab. Click on **Select a MySQL version** and select the latest MySQL version of the DB system (**9.0.1**) .
 
     ![HeatWave add host](./images/mysql-configuration-version.png "mysql host ")
 
@@ -233,7 +233,7 @@ In this lab, you will be guided through the following tasks:
 
 13. On Configure hardware
     - 1. **IMPORTANT** Check the  **Enable Heatwave** box
-    - 2. Click the **Change shape** button to select **ECPU** then **MySQL.8** shape and and click the **Select a Shape** button
+    - 2. Click the **Change shape** button to select **ECPU** then **MySQL.32** shape and and click the **Select a Shape** button
     - 3. Click the **Configure HeatWave Cluster** button 
         - Select **Change shape**
         - Select **HeatWave.512GB** shape
