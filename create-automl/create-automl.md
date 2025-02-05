@@ -138,7 +138,7 @@ from  airportdb.bts_raw_data where id < 1001;</copy>
     ```
 
     ```bash
-    <copy>delete  from bts_airport_delay_train  where OPER_CARRIER in ("ENDEAVOR", "HAWAIIAN", "PIEDMONT");</copy>
+    <copy>delete  from bts_airport_delay_train  where OPER_CARRIER in ("ENDEAVOR", "COMMUTAIR", "PIEDMONT", "SKYWEST");</copy>
     ```
     k. Review delete action :
 
