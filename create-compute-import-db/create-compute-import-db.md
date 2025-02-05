@@ -199,7 +199,28 @@ You will need a compute Instance to connect to your brand new MySQL database.
 
     ![mysql shell install](./images/mysql-install-shell.png "mysql shell install ")
 
-## Task 4: Import external airportdb schema data into HeatWave DB
+## Task 4: Download Airportdb Database
+
+The installation procedure involves downloading the airportdb database to cloud shell and importing the data from cloud shell into the MySQL DB System using the MySQL Shell Dump Loading utility. For information about this utility
+
+To install the airportdb database:
+
+1. Download the airportdb sample database and unpack it. The airportdb sample database is provided for download as a compressed tar or Zip archive. The download is approximately 640 MBs in size.
+
+    a. Get sample file
+
+    ```bash
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/MdFkX2s2_x9Miktl08UoorNTIyE-bIULjDXcbYuU1ukSfw1g48AEUkmH0-UcN5bQ/n/idazzjlcjqzj/b/irportdb-bucket-20230123-2124/o/airportdb_ysqlsh_331.zip</copy>
+    ```
+
+    b. Unzip sample file
+
+    ```bash
+    <copy>unzip airportdb_ysqlsh_331.zip</copy>
+    ```
+   
+
+## Task 5: Import external airportdb schema data into HeatWave DB
 
 The data loading process involves using MySQL Shell and Object storage to create the airportdb schema and import its data using the MySQL Shell Dump Loading utility. For information about this utility, see Dump Loading Utility: [https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-load-dump.htmly](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-load-dump.html)
 
@@ -233,7 +254,7 @@ The data loading process involves using MySQL Shell and Object storage to create
     ```
 
     ```bash
-    <copy>util.loadDump("https://objectstorage.us-ashburn-1.oraclecloud.com/p/4TAWm0ayQtIPsxmZqDRNt9j3xxG83Ztjv-YVa7czxzdtu7H-rTKivnkUey97YIQG/n/mysqlpm/b/mysql_airport/o/airportdball/", {threads: 16,progressFile: "progress.json", loadIndexes:false,ignoreVersion:true})</copy>
+    <copy>util.loadDump("airportdb", {threads: 16, deferTableIndexes: "all", ignoreVersion: true, loadIndexes:false})</copy>
     ```
 
     ![mysql load data](./images/mysql-load-data.png "mysql load data ")
