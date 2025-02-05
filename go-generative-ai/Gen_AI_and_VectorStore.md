@@ -118,11 +118,13 @@ For example:
        ```bash
        <copy>
        SET @dl_tables = '[{
-       "db_name": "vectordb1",
+       "db_name": "vectordb-1",
        "tables": [{
-       "table_name": "HeatwaveInfo",
+       "table_name": "Document-1",
        "dialect": {
        "format": "pdf"
+       "language": "es",
+       "ocr": true
        },
        "file": [{
        "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/BSbTtQqFXryq2fvx43cM3ueVK6F8ZfHIvycYOhwuW7NFESkvVlfVa3l21TG... "
@@ -131,12 +133,12 @@ For example:
        }]'; </copy>
        ```
 
-4. On command Line, Run the next command to SET a variable that stores the database list
+5. On command Line, Run the next command to SET a variable that stores the database list
 
     ```bash
-    <copy>SET @db_list = '["vectordb1"]'; </copy>
+    <copy>SET @db_list = '["vectordb-1"]'; </copy>
     ```
-5. On command Line, Run the next command to SET a variable that stores the procedure options
+6. On command Line, Run the next command to SET a variable that stores the procedure options
 
     ```bash
     <copy>
@@ -158,12 +160,12 @@ For example:
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
     ```bash
-    <copy>SELECT COUNT(*) FROM vectordb1.HeatwaveInfo; </copy>
+    <copy>SELECT COUNT(*) FROM vectordb-1.Document-1; </copy>
     ```
 2. On command Line, Run the next command to inspect the content of a row in your **database.table**
 
     ```bash
-    <copy>SELECT * FROM vectordb1.HeatwaveInfo LIMIT 1\G </copy>
+    <copy>SELECT * FROM vectordb-1.Document-1 LIMIT 1\G </copy>
     ```
 
 ## Task 7: Compare the chat generated responses between general training and RAG responses
@@ -178,6 +180,98 @@ For example:
 
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
+       ```bash
+       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb-1.Document-1"), "model_options", JSON_OBJECT("language", "es"));
+       SET @query="What is HeatWave AutoML?";
+
+       CALL sys.ML_RAG(@query,@output,@options);
+       SELECT JSON_PRETTY(@output) \G </copy>
+       ```
+
+## Task 8: Further improve RAG capabilities with Custom RAG procedura
+
+1. Create a Store Procedure to improve RAG capabilities:
+
+       ```bash
+       <copy>DROP PROCEDURE IF EXISTS RAG_Plus3;
+       DELIMITER //
+       CREATE DEFINER=`admin`@`%` PROCEDURE `RAG_Plus3`(
+           IN input_query TEXT, -- Input query for the RAG process
+           IN table_name TEXT,  -- Table name for the vector store
+           OUT result TEXT      -- Output variable to store the result
+       )
+       BEGIN
+           DECLARE output TEXT;
+           DECLARE response TEXT;
+           DECLARE citations TEXT;
+           DECLARE citation_len INT DEFAULT 0;
+           DECLARE segments TEXT DEFAULT '';
+           DECLARE segment TEXT;
+           DECLARE k INT DEFAULT 0;
+           DECLARE vector_store_json TEXT;
+       
+           -- Construct the vector store JSON dynamically
+           SET vector_store_json = CONCAT('"', table_name, '"');
+       
+           -- Construct the dynamic SQL query for sys.ML_RAG
+           SET @rag_query = CONCAT(
+               "CALL sys.ML_RAG('", 
+               input_query, "', ", -- Use the input_query value directly in the string
+               "@output, JSON_OBJECT(",
+               "'skip_generate', TRUE, ",
+               "'vector_store', JSON_ARRAY(", vector_store_json, "), ",
+               "'model_options', JSON_OBJECT(",
+               "'model_id', 'llama3-8b-instruct-v1', ",
+               "'language', 'es' ",
+               "), ",
+               "'n_citations', 10))"
+           );
+       
+           -- Execute the dynamic SQL query
+           PREPARE rag_stmt FROM @rag_query;
+           EXECUTE rag_stmt;
+           DEALLOCATE PREPARE rag_stmt;
+       
+           -- Extract response and citations from the JSON
+           SET output = @output;
+           SET response = JSON_UNQUOTE(JSON_EXTRACT(output, '$.text'));
+           SET citations = JSON_UNQUOTE(JSON_EXTRACT(output, '$.citations'));
+           SET citation_len = JSON_LENGTH(citations);
+           SET segments = "";
+       
+           -- Build the segments from the citations
+           WHILE k < citation_len DO
+               SET segment = JSON_UNQUOTE(JSON_EXTRACT(citations, CONCAT('$[', k, '].segment')));
+               SET segments = CONCAT(segments, ' ', segment);
+               SET k = k + 1;
+           END WHILE;
+       
+           -- Generate the final query based on the context and original question
+           SET @query = CONCAT(
+               "Con base en el contexto proporcionado, responda a la siguiente pregunta asegurándose de no incluir información que viole la ni la ley de protección de datos personales identificables (PII) ni la ley de información protegida de salud (PHI): ",
+               input_query, 
+               " De contexto ", 
+               segments
+           );
+       
+           -- Execute the sys.ML_GENERATE function to get the final result
+           SELECT sys.ML_GENERATE(@query,
+               JSON_OBJECT(
+                   'task', 'generation', 
+                   'model_id', 'llama3-8b-instruct-v1', 
+                   'language', 'es'
+               )
+           ) INTO result;
+       END //
+       DELIMITER ; </copy>
+       ```
+   
+3. Compare agains the regular HeatWave Chat and RAG
+
+       ```bash
+       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb-1.Document-1",@result);
+       SELECT JSON_PRETTY(@result); </copy>
+       ```
 
 You may now **proceed to the next lab**
 
