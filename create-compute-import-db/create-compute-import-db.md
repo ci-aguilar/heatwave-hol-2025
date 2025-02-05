@@ -219,10 +219,10 @@ To install the airportdb database:
     <copy>unzip airport-db.zip</copy>
     ```
 
-2. Download the BTS_RAW_DATA
+2. Download the BTS_/RAW_/DATA
    
     ```bash
-    <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/2IRQHIPeOxbESuxJMBOQFmyW9jhwqzJm0Kt3Xt3pkaxiJ1x5E6HczpMt3lIR4XZh/n/idi1o0a010nx/b/Bucket-CA/o/AutoML/bts_raw_data.csv</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/2IRQHIPeOxbESuxJMBOQFmyW9jhwqzJm0Kt3Xt3pkaxiJ1x5E6HczpMt3lIR4XZh/n/idi1o0a010nx/b/Bucket-CA/o/AutoML/bts_raw_data.csv</copy>
     ```
 
 ## Task 5: Import external airportdb schema data into HeatWave DB
