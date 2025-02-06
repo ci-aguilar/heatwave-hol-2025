@@ -237,9 +237,9 @@ In this lab, you will be guided through the following tasks:
     a. Join the passenger_survey table with another table in the schema
 
     ```bash
-    <copy> select p.* , ps.* from passenger p 
+    <copy>select p.* , ps.* from passenger p 
     join passenger_survey ps on p.passenger_id = ps.ID
-    where p.passenger_id = 28; </copy>
+    where p.passenger_id = 28;</copy>
     ```
 
 5. Your output for steps 2 thru 5 should look like this:
