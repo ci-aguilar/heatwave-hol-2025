@@ -201,7 +201,7 @@ In this lab, you will be guided through the following task:
 In this example, data is assigned to a @row\_input session variable, and the variable is called by the routine. The model handle is called using the @airport\_model session variable:
 
     ```bash
-    <copy>SET @airline_input = JSON_OBJECT('MONTH', 'Oct', 'ORIGIN_AIRPORT', 'MIA', 'SCHEDULED_DEPT_TIME', 1800, 'AVG_MINUTES_LATE', 0);  </copy>
+    <copy>SET @airline_input = JSON_OBJECT('ID','100', 'MONTH', 'Oct', 'ORIGIN_AIRPORT', 'MIA', 'SCHEDULED_DEPT_TIME', 1800, 'AVG_MINUTES_LATE', 0);  </copy>
     ```
 
     ```bash
