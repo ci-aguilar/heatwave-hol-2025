@@ -219,7 +219,7 @@ To install the airportdb database:
     <copy>unzip airport-db.zip</copy>
     ```
 
-2. Download the BTS_/RAW_/DATA
+2. Download the BTS\_RAW\_DATA
    
     ```bash
     <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/2IRQHIPeOxbESuxJMBOQFmyW9jhwqzJm0Kt3Xt3pkaxiJ1x5E6HczpMt3lIR4XZh/n/idi1o0a010nx/b/Bucket-CA/o/AutoML/bts_raw_data.csv</copy>
@@ -259,12 +259,29 @@ The data loading process involves using MySQL Shell and Object storage to create
     ```
 
     ```bash
-    <copy>util.loadDump("airportdb", {threads: 16, deferTableIndexes: "all", ignoreVersion: true, loadIndexes:false})</copy>
+    <copy>util.loadDump("airport-db", {threads: 16, deferTableIndexes: "all", ignoreVersion: true, loadIndexes:false})</copy>
     ```
 
     ![mysql load data](./images/mysql-load-data.png "mysql load data ")
 
-4. View  the airportdb total records per table
+4. Load the 'BTS\_RAW\_DATA.csv table into the MySQL DB System using the MySQL Shell Import Table Utility.
+
+    ```bash
+    <copy>\sql CREATE TABLE airportdb.bts_raw_data (
+    `OPER_CARRIER` varchar(255) DEFAULT NULL,
+    `MONTH` varchar(255) DEFAULT NULL,
+    `ORIGIN_AIRPORT` varchar(255) DEFAULT NULL,
+    `SCHEDULED_DEPT_TIME` int DEFAULT NULL,
+    `AVG_MINUTES_LATE` float DEFAULT '0',
+    `id` int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</copy>
+    ```
+
+    ```bash
+    <copy>util.importTable("file:///home/opc/bts_raw_data.csv", {"characterSet": "latin1", "schema": "airportdb", "table": "bts_raw_data", "dialect": "default", "skipRows": "1"})</copy>
+    ```
+
+5. View  the airportdb total records per table
 
     ```bash
     <copy>\sql</copy>
@@ -276,7 +293,7 @@ The data loading process involves using MySQL Shell and Object storage to create
 
     ![airportdb total records](./images/airportdb-list.png "airportdb total records") 
 
-5. Exit MySQL Shell
+6. Exit MySQL Shell
 
     ```bash
       <copy>\q</copy>
