@@ -50,6 +50,8 @@ For example:
 
 ## Task 2: Add Text Based documents on OCI Object Store Buckets
 
+You may use any text based document that you like. For this lab, we have provided the following document.
+
 1. Click on this link to **Download file [HeatwaveInfo.pdf](files/go-generative-ai/files/heatwave-genai-technical-brief.pdf)**  to your local machine. **This PDF file can be used to upload and create the vector table for the next Tasks**
 
 2. In the Buckets page, click the **Your-Bucket-Name** name to load images into. The bucket's details page is displayed.
@@ -106,7 +108,7 @@ For example:
 3. On command Line, Run the next command to create a database called **vectordb1**:
    
        ```bash
-       <copy>CREATE SCHEMA vectordb1; </copy>
+       <copy>CREATE SCHEMA vectordb-1; </copy>
        ```
      
 ## Task 5: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
