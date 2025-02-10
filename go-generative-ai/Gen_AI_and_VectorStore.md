@@ -162,12 +162,12 @@ You may use any text based document that you like. For this lab, we have provide
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
     ```bash
-    <copy>SELECT COUNT(*) FROM vectordb1.Document-1; </copy>
+    <copy>SELECT COUNT(*) FROM vectordb1.Document1; </copy>
     ```
 2. On command Line, Run the next command to inspect the content of a row in your **database.table**
 
     ```bash
-    <copy>SELECT * FROM vectordb1.Document-1 LIMIT 1\G </copy>
+    <copy>SELECT * FROM vectordb1.Document1 LIMIT 1\G </copy>
     ```
 
 ## Task 7: Compare the chat generated responses between general training and RAG responses
@@ -183,7 +183,7 @@ For example:
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
        ```bash
-       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.Document-1"), "model_options", JSON_OBJECT("language", "es"));
+       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.Document1"), "model_options", JSON_OBJECT("language", "es"));
        SET @query="What is HeatWave AutoML?";
 
        CALL sys.ML_RAG(@query,@output,@options);
@@ -271,7 +271,7 @@ For example:
 3. Compare agains the regular HeatWave Chat and RAG
 
        ```bash
-       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb-1.Document-1",@result);
+       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb-1.Document1",@result);
        SELECT JSON_PRETTY(@result); </copy>
        ```
 
