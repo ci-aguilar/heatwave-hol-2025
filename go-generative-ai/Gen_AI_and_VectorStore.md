@@ -122,7 +122,7 @@ You may use any text based document that you like. For this lab, we have provide
        SET @dl_tables = '[{
        "db_name": "vectordb1",
        "tables": [{
-       "table_name": "Document-1",
+       "table_name": "Document1",
        "dialect": {
        "format": "pdf",
        "language": "es",
