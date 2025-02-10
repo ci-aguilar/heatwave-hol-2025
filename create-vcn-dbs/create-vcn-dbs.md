@@ -219,7 +219,7 @@ In this lab, you will be guided through the following tasks:
 
 10. Click on Show Advanced Options
 
-11. **IMPORTANT** Go to the Configuration tab. Click on **Select a MySQL version** and select the latest MySQL version of the DB system (**9.0.1**) .
+11. **IMPORTANT** Go to the Configuration tab. Click on **Select a MySQL version** and select the latest MySQL version of the DB system (**9.2.0**) _Latest version might differ as they are released_ .
 
     ![HeatWave add host](./images/mysql-configuration-version.png "mysql host ")
 
