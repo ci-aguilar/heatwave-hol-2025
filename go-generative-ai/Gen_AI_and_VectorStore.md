@@ -108,7 +108,7 @@ You may use any text based document that you like. For this lab, we have provide
 3. On command Line, Run the next command to create a database called **vectordb1**:
    
        ```bash
-       <copy>CREATE SCHEMA `vectordb-1`; </copy>
+       <copy>CREATE SCHEMA `vectordb1`; </copy>
        ```
      
 ## Task 5: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
@@ -120,25 +120,25 @@ You may use any text based document that you like. For this lab, we have provide
        ```bash
        <copy>
        SET @dl_tables = '[{
-       "db_name": "vectordb-1",
+       "db_name": "vectordb1",
        "tables": [{
        "table_name": "Document-1",
        "dialect": {
-       "format": "pdf"
+       "format": "pdf",
        "language": "es",
        "ocr": true
        },
        "file": [{
-       "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/BSbTtQqFXryq2fvx43cM3ueVK6F8ZfHIvycYOhwuW7NFESkvVlfVa3l21TG... "
+       "par": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/y4TeTCJxA8niTVW2R81Qs6YCO7xi7foUC6UtTKisEZRvCWNtiJDHlAySB8k2m340/n/idi1o0a010nx/b/Bucket-CA/o/"
        }]
        }]
-       }]'; </copy>
+       }]';</copy>
        ```
 
 5. On command Line, Run the next command to SET a variable that stores the database list
 
     ```bash
-    <copy>SET @db_list = '["vectordb-1"]'; </copy>
+    <copy>SET @db_list = '["vectordb1"]'; </copy>
     ```
 6. On command Line, Run the next command to SET a variable that stores the procedure options
 
@@ -162,12 +162,12 @@ You may use any text based document that you like. For this lab, we have provide
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
     ```bash
-    <copy>SELECT COUNT(*) FROM vectordb-1.Document-1; </copy>
+    <copy>SELECT COUNT(*) FROM vectordb1.Document-1; </copy>
     ```
 2. On command Line, Run the next command to inspect the content of a row in your **database.table**
 
     ```bash
-    <copy>SELECT * FROM vectordb-1.Document-1 LIMIT 1\G </copy>
+    <copy>SELECT * FROM vectordb1.Document-1 LIMIT 1\G </copy>
     ```
 
 ## Task 7: Compare the chat generated responses between general training and RAG responses
@@ -183,7 +183,7 @@ For example:
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
        ```bash
-       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb-1.Document-1"), "model_options", JSON_OBJECT("language", "es"));
+       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.Document-1"), "model_options", JSON_OBJECT("language", "es"));
        SET @query="What is HeatWave AutoML?";
 
        CALL sys.ML_RAG(@query,@output,@options);
