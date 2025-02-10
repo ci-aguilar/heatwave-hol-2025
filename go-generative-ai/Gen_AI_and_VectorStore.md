@@ -52,7 +52,7 @@ For example:
 
 You may use any text based document that you like. For this lab, we have provided the following document.
 
-1. Click on this link to **Download file [HeatwaveInfo.pdf](files/go-generative-ai/files/heatwave-genai-technical-brief.pdf)**  to your local machine. **This PDF file can be used to upload and create the vector table for the next Tasks**
+1. Click on this link to **Download file [HeatwaveInfo.pdf]([https://objectstorage.us-ashburn-1.oraclecloud.com/p/CUCCtrIsxGslRW6HbL6FRZWh8lZzPTOBy_ihyS7B0ec5t4h3voGK5eL9kjk2dpQA/n/idi1o0a010nx/b/Bucket-CA/o/GEN-AI/heatwave-en-2.pdf])**  to your local machine. **This PDF file can be used to upload and create the vector table for the next Tasks**
 
 2. In the Buckets page, click the **Your-Bucket-Name** name to load images into. The bucket's details page is displayed.
 3. Under Resources, click Objects to display the list of objects in the bucket.
@@ -108,7 +108,7 @@ You may use any text based document that you like. For this lab, we have provide
 3. On command Line, Run the next command to create a database called **vectordb1**:
    
        ```bash
-       <copy>CREATE SCHEMA vectordb-1; </copy>
+       <copy>CREATE SCHEMA `vectordb-1`; </copy>
        ```
      
 ## Task 5: Load the Text Based documents into a vector table, using MySQL HeatWave AutoPilot
