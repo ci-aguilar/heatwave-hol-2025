@@ -183,7 +183,7 @@ For example:
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
        ```bash
-       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.Document1"), "model_options", JSON_OBJECT("language", "es"));
+       <copy>SET @options = JSON_OBJECT("schema", JSON_ARRAY("vectordb1.Document1"), "model_options", JSON_OBJECT("language", "es"));
        SET @query="What is HeatWave AutoML?";
 
        CALL sys.ML_RAG(@query,@output,@options);
@@ -221,7 +221,7 @@ For example:
                input_query, "', ", -- Use the input_query value directly in the string
                "@output, JSON_OBJECT(",
                "'skip_generate', TRUE, ",
-               "'vector_store', JSON_ARRAY(", vector_store_json, "), ",
+               "'schema', JSON_ARRAY(", vector_store_json, "), ",
                "'model_options', JSON_OBJECT(",
                "'model_id', 'llama3-8b-instruct-v1', ",
                "'language', 'es' ",
@@ -271,7 +271,7 @@ For example:
 3. Compare agains the regular HeatWave Chat and RAG
 
        ```bash
-       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb-1.Document1",@result);
+       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb1.Document1",@result);
        SELECT JSON_PRETTY(@result); </copy>
        ```
 
