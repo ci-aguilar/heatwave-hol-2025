@@ -183,7 +183,7 @@ For example:
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
        ```bash
-       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.Document1"), "model_options", JSON_OBJECT("language", "es")); </copy>
+       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.document1"), "model_options", JSON_OBJECT("language", "es")); </copy>
        ```
    
        ```bash
@@ -279,7 +279,7 @@ For example:
 3. Compare agains the regular HeatWave Chat and RAG
 
        ```bash
-       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb1.Document1",@result);
+       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb1.document1",@result);
        SELECT JSON_PRETTY(@result); </copy>
        ```
 
