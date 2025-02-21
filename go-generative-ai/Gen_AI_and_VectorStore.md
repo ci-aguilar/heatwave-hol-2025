@@ -122,7 +122,7 @@ You may use any text based document that you like. For this lab, we have provide
        SET @dl_tables = '[{
        "db_name": "vectordb1",
        "tables": [{
-       "table_name": "Document1",
+       "table_name": "document1",
        "dialect": {
        "format": "pdf",
        "language": "es",
@@ -162,12 +162,12 @@ You may use any text based document that you like. For this lab, we have provide
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
     ```bash
-    <copy>SELECT COUNT(*) FROM vectordb1.Document1; </copy>
+    <copy>SELECT COUNT(*) FROM vectordb1.document1; </copy>
     ```
 2. On command Line, Run the next command to inspect the content of a row in your **database.table**
 
     ```bash
-    <copy>SELECT * FROM vectordb1.Document1 LIMIT 1\G </copy>
+    <copy>SELECT * FROM vectordb1.document1 LIMIT 1\G </copy>
     ```
 
 ## Task 7: Compare the chat generated responses between general training and RAG responses
@@ -183,10 +183,18 @@ For example:
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
        ```bash
-       <copy>SET @options = JSON_OBJECT("schema", JSON_ARRAY("vectordb1.Document1"), "model_options", JSON_OBJECT("language", "es"));
-       SET @query="What is HeatWave AutoML?";
+       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.Document1"), "model_options", JSON_OBJECT("language", "es")); </copy>
+       ```
+   
+       ```bash
+       SET @query="What is HeatWave AutoML?"; </copy>
+       ```
+   
+       ```bash
+       CALL sys.ML_RAG(@query,@output,@options); </copy>
+       ```
 
-       CALL sys.ML_RAG(@query,@output,@options);
+       ```bash
        SELECT JSON_PRETTY(@output) \G </copy>
        ```
 
@@ -221,7 +229,7 @@ For example:
                input_query, "', ", -- Use the input_query value directly in the string
                "@output, JSON_OBJECT(",
                "'skip_generate', TRUE, ",
-               "'schema', JSON_ARRAY(", vector_store_json, "), ",
+               "'vector_store', JSON_ARRAY(", vector_store_json, "), ",
                "'model_options', JSON_OBJECT(",
                "'model_id', 'llama3-8b-instruct-v1', ",
                "'language', 'es' ",
