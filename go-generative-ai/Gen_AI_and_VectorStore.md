@@ -187,15 +187,15 @@ For example:
        ```
    
        ```bash
-       SET @query="What is HeatWave AutoML?"; </copy>
+       <copy>SET @query="What is HeatWave AutoML?"; </copy>
        ```
    
        ```bash
-       CALL sys.ML_RAG(@query,@output,@options); </copy>
+       <copy>CALL sys.ML_RAG(@query,@output,@options); </copy>
        ```
 
        ```bash
-       SELECT JSON_PRETTY(@output) \G </copy>
+       <copy>SELECT JSON_PRETTY(@output)\G </copy>
        ```
 
 ## Task 8: Further improve RAG capabilities with Custom RAG procedura
