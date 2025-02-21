@@ -143,12 +143,11 @@ You may use any text based document that you like. For this lab, we have provide
 6. On command Line, Run the next command to SET a variable that stores the procedure options
 
     ```bash
-    <copy>
-    SET @options = JSON_OBJECT(
+    <copy>SET @options = JSON_OBJECT(
     'output', 'normal',
     'policy', 'disable_unsupported_columns',
     'external_tables', CAST(@dl_tables AS JSON)
-    ); </copy>
+    );</copy>
     ```
 
 7. On command Line, Run the next command to load the file into your **database.table** using the previous options
@@ -162,9 +161,9 @@ You may use any text based document that you like. For this lab, we have provide
 1. On command Line, Run the next command to Validate your **database.table** by counting the \# of Rows
 
     ```bash
-    <copy>SELECT COUNT(*) FROM vectordb1.document1; </copy>
+    <copy>SELECT COUNT(*) FROM vectordb1.document1;</copy>
     ```
-2. On command Line, Run the next command to inspect the content of a row in your **database.table**
+3. On command Line, Run the next command to inspect the content of a row in your **database.table**
 
     ```bash
     <copy>SELECT * FROM vectordb1.document1 LIMIT 1\G </copy>
@@ -176,27 +175,27 @@ You may use any text based document that you like. For this lab, we have provide
 **call sys.heatwave\_chat("<YourQuery>");**
 For example:
 
-       ```bash
-       <copy>call sys.heatwave_chat("What is HeatWave AutoML?"); </copy>
-       ```
+    ```bash
+    <copy>call sys.heatwave_chat("What is HeatWave AutoML?");</copy>
+    ```
 
 2. This time, you will get a response based on the Vector Store tables, with the Text Based Documents.
    
-       ```bash
-       <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.document1"), "model_options", JSON_OBJECT("language", "es")); </copy>
-       ```
+    ```bash
+    <copy>SET @options = JSON_OBJECT("vector_store", JSON_ARRAY("vectordb1.document1"), "model_options", JSON_OBJECT("language", "es"));</copy>
+    ```
    
-       ```bash
-       <copy>SET @query="What is HeatWave AutoML?"; </copy>
-       ```
+    ```bash
+    <copy>SET @query="What is HeatWave AutoML?"; </copy>
+    ```
    
-       ```bash
-       <copy>CALL sys.ML_RAG(@query,@output,@options); </copy>
-       ```
+    ```bash
+    <copy>CALL sys.ML_RAG(@query,@output,@options); </copy>
+    ```
 
-       ```bash
-       <copy>SELECT JSON_PRETTY(@output)\G </copy>
-       ```
+    ```bash
+    <copy>SELECT JSON_PRETTY(@output)\G </copy>
+    ```
 
 ## Task 8: Further improve RAG capabilities with Custom RAG procedura
 
@@ -273,15 +272,18 @@ For example:
                )
            ) INTO result;
        END //
-       DELIMITER ; </copy>
+       DELIMITER;</copy>
        ```
    
 3. Compare agains the regular HeatWave Chat and RAG
 
-       ```bash
-       <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb1.document1",@result);
-       SELECT JSON_PRETTY(@result); </copy>
-       ```
+    ```bash
+    <copy>CALL RAG_Plus3("What is HeatWave AutoML?","vectordb1.document1",@result);</copy>
+    ```
+
+    ```bash
+    <copy>SELECT JSON_PRETTY(@result);</copy>
+    ```
 
 You may now **proceed to the next lab**
 
