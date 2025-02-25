@@ -11,7 +11,7 @@ HeatWave Chat uses information available in public data sources to generate a re
 you have a vector store set up, then HeatWave Chat by default performs a global context search across all the loaded
 vector store tables to generate a response for your query.
 
-_Estimated Time:_ 10 minutes
+_Estimated Time:_ 30 minutes
 
 ### Objectives
 
