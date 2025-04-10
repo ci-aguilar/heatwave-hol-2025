@@ -125,7 +125,7 @@ You may use any text based document that you like. For this lab, we have provide
        "table_name": "document1",
        "dialect": {
        "format": "pdf",
-       "language": "es",
+       "language": "en",
        "ocr": true
        },
        "file": [{
@@ -231,7 +231,7 @@ For example:
                "'vector_store', JSON_ARRAY(", vector_store_json, "), ",
                "'model_options', JSON_OBJECT(",
                "'model_id', 'llama3-8b-instruct-v1', ",
-               "'language', 'es' ",
+               "'language', 'en' ",
                "), ",
                "'n_citations', 10))"
            );
@@ -257,9 +257,9 @@ For example:
        
            -- Generate the final query based on the context and original question
            SET @query = CONCAT(
-               "Con base en el contexto proporcionado, responda a la siguiente pregunta asegurándose de no incluir información que viole la ni la ley de protección de datos personales identificables (PII) ni la ley de información protegida de salud (PHI): ",
+               "Based on context provided, solve the following question: ",
                input_query, 
-               " De contexto ", 
+               " From Context ", 
                segments
            );
        
@@ -268,7 +268,7 @@ For example:
                JSON_OBJECT(
                    'task', 'generation', 
                    'model_id', 'llama3-8b-instruct-v1', 
-                   'language', 'es'
+                   'language', 'en'
                )
            ) INTO result;
        END //
